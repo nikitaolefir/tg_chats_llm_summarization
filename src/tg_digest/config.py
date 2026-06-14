@@ -1,6 +1,7 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -17,8 +18,17 @@ API_ID = int(API_ID)
 
 SESSION_PATH = PROJECT_ROOT / "anon"
 
+CONFIG_PATH = PROJECT_ROOT / "config.yaml"
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
 EMBEDDINGS_DIR = DATA_DIR / "embeddings"
-DB_PATH = DATA_DIR/ "database"
+DB_PATH = DATA_DIR / "database.db"
+
+def load_chats():
+    if not CONFIG_PATH.exists():
+        raise RuntimeError(f"No {CONFIG_PATH}. Copy config.example.yaml into config.yaml and populate with your chats")
+    with open(CONFIG_PATH, encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    return [c for c in data["chats"] if c.get("enabled", True)]
+

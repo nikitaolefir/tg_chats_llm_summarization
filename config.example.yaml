@@ -1,0 +1,7 @@
+chats:
+  - id: -1102393346551
+    name: "Channel Y"
+    enabled: false
+  - id: -1004614555355
+    name: "Channel X"
+    enabled: true
