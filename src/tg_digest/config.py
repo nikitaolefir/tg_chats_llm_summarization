@@ -25,6 +25,10 @@ PROCESSED_DIR = DATA_DIR / "processed"
 EMBEDDINGS_DIR = DATA_DIR / "embeddings"
 DB_PATH = DATA_DIR / "database.db"
 
+OLLAMA_MODEL = "llama3.1:8b-instruct-q4_K_M"
+OLLAMA_NUM_CTX = 16384
+
+
 def load_chats():
     if not CONFIG_PATH.exists():
         raise RuntimeError(f"No {CONFIG_PATH}. Copy config.example.yaml into config.yaml and populate with your chats")

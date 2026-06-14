@@ -9,6 +9,7 @@ dependencies = [
     "telethon",
     "python-dotenv",
     "pyyaml",
+    "ollama",
 ]
 
 [tool.setuptools.packages.find]
